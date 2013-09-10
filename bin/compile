@@ -13,6 +13,7 @@ unset GIT_DIR
 # config
 SCONS_VERSION="1.2.0"
 S3_BUCKET="heroku-buildpack-nodejs"
+PATH="/app/vendor/bundle/ruby/1.9.3/bin:$PATH"
 
 # parse and derive params
 BUILD_DIR=$1
