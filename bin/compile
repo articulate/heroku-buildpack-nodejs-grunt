@@ -13,7 +13,7 @@ unset GIT_DIR
 # config
 SCONS_VERSION="1.2.0"
 S3_BUCKET="heroku-buildpack-nodejs"
-PATH="/app/vendor/bundle/ruby/1.9.3/bin:$PATH"
+PATH="/app/vendor/bundle/ruby/2.0.0/bin:$PATH"
 
 # parse and derive params
 BUILD_DIR=$1
@@ -182,6 +182,8 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   # make sure that grunt and grunt-cli are installed locally
   run_npm "install grunt-cli"
   run_npm "install grunt"
+  echo "PATH STATE: "
+  echo $PATH | indent
   echo "-----> Found Gruntfile, running grunt build task"
   $BUILD_DIR/node_modules/.bin/grunt build
 else
