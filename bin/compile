@@ -192,18 +192,13 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   # make sure that grunt and grunt-cli are installed locally
   run_npm "install grunt-cli"
   run_npm "install grunt"
+  # install compass
+  echo "-----> Installing Compass"
+  export GEM_HOME=$BUILD_DIR/.gem/ruby/1.9.1
+  PATH="$GEM_HOME/bin:$PATH"
+  HOME=$BUILD_DIR gem install compass --user-install --no-rdoc --no-ri
+
   echo "-----> Found Gruntfile, running grunt build task"
-  source $BUILD_DIR/.profile.d/ruby.sh
-  export PATH=bin:$BUILD_DIR/bin:$PATH
-  echo $PATH
-  echo "WHAT RUBY: "
-  which ruby
-  ruby -v
-  echo "WHAT GEM: "
-  which gem
-  gem -v
-  ls -l /app/vendor/bundle/ruby/2.0.0/bin
-  ls -l /app/vendor/bundle/bin
   $BUILD_DIR/node_modules/.bin/grunt heroku --cache-dir="$CACHE_DIR"
 else
   echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
