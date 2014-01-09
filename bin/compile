@@ -194,9 +194,11 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   run_npm "install grunt"
   echo "-----> Found Gruntfile, running grunt build task"
   source $BUILD_DIR/.profile.d/ruby.sh
+  cat $BUILD_DIR/.profile.d/ruby.sh
   echo "PATH STATE: "
   echo $PATH | indent
   echo "WHAT RUBY: "
+  which ruby
   ruby -v
   echo "WHAT SASS: "
   bundle exec sass -v
