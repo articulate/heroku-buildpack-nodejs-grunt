@@ -203,7 +203,7 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   which gem
   gem -v
   gem env
-  gem list
+  bundle exec sass -v
   $BUILD_DIR/node_modules/.bin/grunt heroku --cache-dir="$CACHE_DIR"
 else
   echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
