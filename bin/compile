@@ -196,6 +196,8 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   source $BUILD_DIR/.profile.d/ruby.sh
   echo "PATH STATE: "
   echo $PATH | indent
+  echo "WHAT BINARIES HAVE WE: "
+  echo ls -l /app/vendor/bundle/ruby/2.0.0/bin
   export PATH=$BUILD_DIR/bin:$PATH
   $BUILD_DIR/node_modules/.bin/grunt heroku --cache-dir="$CACHE_DIR"
 else
